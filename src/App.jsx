@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import "./App.css";
+import { useState } from "react";
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [subject, setSubject] = useState("");
+  const [time, setTime] = useState(0);
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <div>
+      <p>
+        学習内容
+        <br />
+        <input
+          type="text"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+        />
       </p>
-    </>
-  )
+      <p>
+        学習時間
+        <input
+          type="text"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+        />
+        時間
+      </p>
+      <p>入力されている学習内容：{subject}</p>
+      <p>入力されている時間：{time}時間</p>
+      <button>登録</button>
+      <p>入力されていない項目があります</p>
+      <p>合計時間：0 / 1000 (h)</p>
+    </div>
+  );
 }
 
-export default App
+export default App;
