@@ -1,9 +1,11 @@
 import "./App.css";
 import { useState } from "react";
+import { StudyList } from "./components/StudyList";
 function App() {
   const [subject, setSubject] = useState("");
   const [time, setTime] = useState(0);
   const [logs, setLogs] = useState([]);
+  const [totalTime, setTotalTime] = useState(0);
 
   const handleSubmit = () => {
     if (subject === "" || time === "") {
@@ -15,9 +17,9 @@ function App() {
     setTime(0);
   };
 
-  const totalTime = logs.reduce((sum, log) => {
-    return sum + Number(log.time);
-  }, 0);
+  // const totalTime = logs.reduce((sum, log) => {
+  //   return sum + Number(log.time);
+  // }, 0);
 
   return (
     <div>
@@ -42,13 +44,17 @@ function App() {
       <p>入力されている学習内容：{subject}</p>
       <p>入力されている時間：{time}時間</p>
       <button onClick={handleSubmit}>登録</button>
-      <p>合計時間：{totalTime} / 1000 (h)</p>
+      <p>
+        合計時間：{totalTime} / 1000 (h)
+        {/* <StudyList setTotalTime={setTotalTime} /> / 1000 (h) */}
+      </p>
 
-      {logs.map((log, index) => (
+      {/* {logs.map((log, index) => (
         <p key={index}>
           {log.subject}：{log.time}時間
         </p>
-      ))}
+      ))} */}
+      <StudyList setTotalTime={setTotalTime} />
     </div>
   );
 }
