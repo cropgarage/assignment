@@ -1,18 +1,29 @@
 import "./App.css";
 import { useState } from "react";
 import { StudyList } from "./components/StudyList";
+import { supabase } from "./supabaseClient";
 function App() {
   const [subject, setSubject] = useState("");
   const [time, setTime] = useState(0);
-  const [logs, setLogs] = useState([]);
+  // const [logs, setLogs] = useState([]);
   const [totalTime, setTotalTime] = useState(0);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (subject === "" || time === "") {
       alert("学習内容と学習時間を入力してください");
       return;
     }
-    setLogs([...logs, { subject, time }]);
+
+    const { error } = await supabase.from("study-record").insert({
+      title: subject,
+      time: Number(time),
+    });
+
+    if (error) {
+      alert("エラーが発生しました");
+      return;
+    }
+
     setSubject("");
     setTime(0);
   };
