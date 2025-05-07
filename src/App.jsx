@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import { StudyList } from "./components/StudyList";
-import { supabase } from "./supabaseClient";
+import supabase from "./supabaseClient";
 function App() {
   const [subject, setSubject] = useState("");
   const [time, setTime] = useState(0);
