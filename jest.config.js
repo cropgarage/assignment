@@ -4,6 +4,7 @@ module.exports = {
     "^.+\\.jsx?$": "babel-jest",
   },
   moduleNameMapper: {
-    "^..supabaseClient$": "<rootDir>/src/__mocks__/supabaseClient.js",
+    "^\\.\\/supabaseClient$": "<rootDir>/src/__mocks__/supabaseClient.js",
+    "^\\.\\.\\/supabaseClient$": "<rootDir>/src/__mocks__/supabaseClient.js",
   },
 };

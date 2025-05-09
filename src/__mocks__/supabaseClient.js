@@ -1,4 +1,4 @@
-export const supabase = {
+const supabase = {
   from: () => ({
     select: () => Promise.resolve({ data: [], error: null }),
   }),
